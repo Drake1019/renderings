@@ -17,3 +17,12 @@ Photorealistic exterior rendering of the South view SketchUp model (`South_5156.
 - `south-view-millikin-render.png` — primary photoreal render
 - `south-view-millikin-render-v2.png` — alternate tighter geometry pass
 - `south-view-comparison.png` — source vs render comparison strip
+
+## Southeast corner view (Millikin finishes)
+
+Photoreal render of the SE corner SketchUp massing with drive-thru queue.
+
+- `se_corner_perspective_trace.png` — geometry reference trace
+- `se-corner-millikin-render-v3.png` — primary render
+- `se-corner-millikin-render-v2.png` — alternate pass
+- `se-corner-comparison.png` — trace vs render comparison
