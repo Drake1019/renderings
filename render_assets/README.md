@@ -7,8 +7,10 @@ Photorealistic exterior renders using the Millikin finish palette.
 To render your **exact saved Scenes**, add your model to this folder:
 
 ```
-render_assets/model.skp
+render_assets/Rendering.skp
 ```
+
+(Also accepts `model.skp`.)
 
 Then either:
 

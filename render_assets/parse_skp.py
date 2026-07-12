@@ -9,8 +9,22 @@ import sys
 import zipfile
 from pathlib import Path
 
-SKP_PATH = Path(__file__).parent / "model.skp"
+SKP_CANDIDATES = [
+    Path(__file__).parent / "Rendering.skp",
+    Path(__file__).parent / "rendering.skp",
+    Path(__file__).parent / "model.skp",
+]
 OUT_DIR = Path(__file__).parent / "skp_extracted"
+
+
+def resolve_skp(path: str | None = None) -> Path | None:
+    if path:
+        p = Path(path)
+        return p if p.exists() else None
+    for c in SKP_CANDIDATES:
+        if c.exists():
+            return c
+    return None
 
 
 def find_zip_offset(data: bytes) -> int | None:
@@ -91,10 +105,12 @@ def export_glb(skp: Path, out: Path) -> Path | None:
 
 
 def main() -> int:
-    skp = Path(sys.argv[1]) if len(sys.argv) > 1 else SKP_PATH
-    if not skp.exists():
-        print(f"SKP not found: {skp}")
-        print("Save your SketchUp model to render_assets/model.skp and re-run.")
+    skp = resolve_skp(sys.argv[1] if len(sys.argv) > 1 else None)
+    if not skp:
+        print("SKP not found. Looked for:")
+        for c in SKP_CANDIDATES:
+            print(f"  {c}")
+        print("Upload Rendering.skp to render_assets/ on GitHub and commit.")
         return 1
 
     print(f"Parsing: {skp} ({skp.stat().st_size:,} bytes)")
