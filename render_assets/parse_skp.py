@@ -127,6 +127,15 @@ def main() -> int:
     print(f"Extracted {len(extracted)} files to {OUT_DIR}")
 
     thumbs = list(OUT_DIR.rglob("meta/*.png")) + list(OUT_DIR.rglob("**/thumbnail*.png"))
+    scene_thumbs = list(OUT_DIR.rglob("scene_thumbnails/*.png"))
+    if scene_thumbs:
+        scenes_out = Path(__file__).parent / "scenes"
+        scenes_out.mkdir(parents=True, exist_ok=True)
+        print("Saved scene thumbnails (exact SketchUp camera views):")
+        for t in scene_thumbs:
+            dest = scenes_out / t.name.replace(" ", "-").lower().replace(".png", "-source.png")
+            dest.write_bytes(t.read_bytes())
+            print(f"  {t.name} -> {dest}")
     if thumbs:
         print("Thumbnails / scene previews:")
         for t in thumbs:
