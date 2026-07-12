@@ -1,43 +1,58 @@
-# South View — Millikin Finishes Render
+# Render assets
 
-Photorealistic exterior rendering of the South view SketchUp model (`South_5156.pdf`), using the Millikin finish palette.
+Photorealistic exterior renders using the Millikin finish palette.
 
-## Finish stack (bottom → top)
-1. Light tan/beige rough ashlar / ledger stone water table
-2. Dark charcoal-gray brick primary walls
-3. Thin dark horizontal ribbed / soldier accent bands
-4. Light/medium-gray horizontal lap siding under the cornice
-5. Matte black metal fascia, coping, brackets, and canopy
-6. Matte black storefront frames with lightly blue-tinted glass
+## SketchUp model workflow (recommended)
+
+To render your **exact saved Scenes**, add your model to this folder:
+
+```
+render_assets/model.skp
+```
+
+Then either:
+
+### Option A — Parse here (geometry + scene metadata)
+
+```bash
+python3 render_assets/parse_skp.py
+```
+
+This extracts the SKP archive, lists scene names/thumbnails, and exports `skp_extracted/model.glb`.
+
+### Option B — Export scenes from SketchUp (best for exact camera views)
+
+1. Open `model.skp` in SketchUp
+2. Ruby Console: `load "render_assets/export_scenes.rb"`
+3. Upload the exported PNGs to `render_assets/scenes/`
+
+The Ruby script exports every saved Scene at 4000×3000 with the exact camera from your file.
+
+## Millikin finish stack
+
+1. Tan/beige ledger stone water table
+2. Charcoal-gray brick
+3. Dark horizontal accent bands
+4. Light-gray upper lap siding
+5. Matte black fascia, canopy, and trim
 
 ## Files
-- `South_5156.pdf` — source South view export
-- `south_source_stitched.png` / `south_embed_*.png` — extracted SketchUp frames
-- `south_clean_ref.png` — cleaned reference (axes removed)
-- `south-view-millikin-render.png` — primary photoreal render
-- `south-view-millikin-render-v2.png` — alternate tighter geometry pass
-- `south-view-comparison.png` — source vs render comparison strip
 
-## Southeast corner view (Millikin finishes)
+| File | Purpose |
+|------|---------|
+| `model.skp` | **Your SketchUp model** (add this) |
+| `export_scenes.rb` | Batch-export all Scenes as PNG from SketchUp |
+| `parse_skp.py` | Parse SKP, extract scenes/GLB without SketchUp |
+| `scenes/*.png` | Exported scene images (exact camera) |
+| `South_5156.pdf` | Earlier PDF export (2 embedded views) |
 
-Photoreal render of the SE corner SketchUp massing with drive-thru queue.
+## South view renders (from PDF export)
 
-- `se_corner_perspective_trace.png` — geometry reference trace
-- `se-corner-millikin-render-v3.png` — primary render
-- `se-corner-millikin-render-v2.png` — alternate pass
-- `se-corner-comparison.png` — trace vs render comparison
+- `south-view-millikin-render.png`
+- `south-view-millikin-render-v2.png`
 
-### Southeast corner — exact uploaded view
+## SE corner renders (approximate — pending `model.skp`)
 
-Re-rendered from the uploaded SketchUp SE corner screenshot geometry (not the South PDF storefront view).
+- `se-corner-exact-view-render.png`
 
-- `trace_se_view.py` — geometry trace script matching the uploaded view
-- `se_corner_uploaded_view_trace.png` — traced massing from uploaded view
-- `se-corner-exact-view-render.png` — latest render attempt (Millikin finishes)
-- `se-corner-uploaded-view-render.png` — trace-locked render attempt
-
-**For pixel-exact fidelity (required):** inline chat images are not saved as files, so the renderer cannot use your exact pixels. Export your SketchUp screenshot and commit it as:
-
-`render_assets/se-corner-source.png`
-
-Once that file exists, the render can lock to your exact geometry instead of a hand-drawn approximation.
+**Note:** Chat image attachments are not saved as files. Commit `model.skp` or scene PNGs to the repo for exact geometry.
