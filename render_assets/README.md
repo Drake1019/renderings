@@ -36,4 +36,8 @@ Re-rendered from the uploaded SketchUp SE corner screenshot geometry (not the So
 - `se-corner-exact-view-render.png` — latest render attempt (Millikin finishes)
 - `se-corner-uploaded-view-render.png` — trace-locked render attempt
 
-**For pixel-exact fidelity:** save your SketchUp screenshot as `render_assets/se-corner-source.png` so it can be used directly as a reference image.
+**For pixel-exact fidelity (required):** inline chat images are not saved as files, so the renderer cannot use your exact pixels. Export your SketchUp screenshot and commit it as:
+
+`render_assets/se-corner-source.png`
+
+Once that file exists, the render can lock to your exact geometry instead of a hand-drawn approximation.
