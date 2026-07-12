@@ -26,3 +26,14 @@ Photoreal render of the SE corner SketchUp massing with drive-thru queue.
 - `se-corner-millikin-render-v3.png` — primary render
 - `se-corner-millikin-render-v2.png` — alternate pass
 - `se-corner-comparison.png` — trace vs render comparison
+
+### Southeast corner — exact uploaded view
+
+Re-rendered from the uploaded SketchUp SE corner screenshot geometry (not the South PDF storefront view).
+
+- `trace_se_view.py` — geometry trace script matching the uploaded view
+- `se_corner_uploaded_view_trace.png` — traced massing from uploaded view
+- `se-corner-exact-view-render.png` — latest render attempt (Millikin finishes)
+- `se-corner-uploaded-view-render.png` — trace-locked render attempt
+
+**For pixel-exact fidelity:** save your SketchUp screenshot as `render_assets/se-corner-source.png` so it can be used directly as a reference image.
